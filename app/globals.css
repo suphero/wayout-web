@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+:root {
+  --bg-deepest: #0a0a0f;
+  --bg-secondary: #1a1a2e;
+  --bg-emerald: #102216;
+  --neon-green: #0DF259;
+  --neon-cyan: #00ffff;
+  --neon-purple: #B400FF;
+  --neon-orange: #FFA500;
+  --neon-pink: #FF1493;
+  --neon-blue: #3b82f6;
+  --text-primary: #FFFFFF;
+  --text-secondary: #888888;
+  --text-muted: #555555;
+}
+
+@theme inline {
+  --color-bg-deepest: var(--bg-deepest);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-emerald: var(--bg-emerald);
+  --color-neon-green: var(--neon-green);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-purple: var(--neon-purple);
+  --color-neon-orange: var(--neon-orange);
+  --color-neon-pink: var(--neon-pink);
+  --color-neon-blue: var(--neon-blue);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --font-display: var(--font-orbitron);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--neon-green) var(--bg-deepest);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-deepest);
+  color: var(--text-primary);
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay */
+.scanline-overlay::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* Neon text glow */
+.neon-text-green {
+  text-shadow: 0 0 7px var(--neon-green), 0 0 10px var(--neon-green),
+    0 0 21px var(--neon-green), 0 0 42px var(--neon-green);
+}
+
+.neon-text-cyan {
+  text-shadow: 0 0 7px var(--neon-cyan), 0 0 10px var(--neon-cyan),
+    0 0 21px var(--neon-cyan);
+}
+
+.neon-text-purple {
+  text-shadow: 0 0 7px var(--neon-purple), 0 0 10px var(--neon-purple),
+    0 0 21px var(--neon-purple);
+}
+
+/* Neon border glow */
+.neon-border-green {
+  box-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green),
+    inset 0 0 5px rgba(13, 242, 89, 0.1);
+}
+
+.neon-border-cyan {
+  box-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan),
+    inset 0 0 5px rgba(0, 255, 255, 0.1);
+}
+
+.neon-border-purple {
+  box-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple),
+    inset 0 0 5px rgba(180, 0, 255, 0.1);
+}
+
+/* Perspective grid floor */
+.grid-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(13, 242, 89, 0.03) 100%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(50% - 1px),
+      rgba(13, 242, 89, 0.08) calc(50% - 1px),
+      rgba(13, 242, 89, 0.08) calc(50% + 1px),
+      transparent calc(50% + 1px)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent calc(50% - 1px),
+      rgba(13, 242, 89, 0.08) calc(50% - 1px),
+      rgba(13, 242, 89, 0.08) calc(50% + 1px),
+      transparent calc(50% + 1px)
+    );
+  background-size: 100% 100%, 80px 80px, 80px 80px;
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: center bottom;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+}
+
+/* Corner bracket decoration */
+.corner-brackets {
+  position: relative;
+}
+.corner-brackets::before,
+.corner-brackets::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--neon-green);
+  opacity: 0.5;
+}
+.corner-brackets::before {
+  top: -4px;
+  left: -4px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+.corner-brackets::after {
+  bottom: -4px;
+  right: -4px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scanline-overlay::after {
+    display: none;
+  }
+}
+
+/* Selection color */
+::selection {
+  background: rgba(13, 242, 89, 0.3);
+  color: var(--text-primary);
+}
