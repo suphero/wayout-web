@@ -129,7 +129,7 @@ export default function HeroSection() {
           className="flex flex-wrap items-center justify-center gap-3 mt-8"
         >
           <a
-            href="https://x.com/wayoutapp"
+            href="https://x.com/Wayoutonx"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 whitespace-nowrap px-5 py-2.5 border border-white/10 rounded-full text-text-secondary hover:text-text-primary hover:border-neon-green/30 transition-all"

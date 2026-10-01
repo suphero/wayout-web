@@ -35,6 +35,14 @@ export const metadata: Metadata = {
       "Stop scrolling. Start walking. The digital wellbeing app you can't cheat.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@Wayoutonx",
+    creator: "@Wayoutonx",
+    title: "WayOut — Walk More, Scroll Less",
+    description:
+      "Stop scrolling. Start walking. The digital wellbeing app you can't cheat.",
+  },
 };
 
 export default function RootLayout({

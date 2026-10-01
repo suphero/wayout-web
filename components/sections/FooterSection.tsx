@@ -111,7 +111,7 @@ export default function FooterSection() {
           <div className="flex items-center gap-5">
             {/* X (Twitter) */}
             <a
-              href="https://x.com/wayoutapp"
+              href="https://x.com/Wayoutonx"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-text-primary transition-colors"
